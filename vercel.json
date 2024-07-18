@@ -1,23 +1,11 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "tenant_creation/wsgi.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "tenant_management/wsgi.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "tenant_creation/wsgi.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "tenant_management/wsgi.py"
-    }
-  ]
+    "builds": [{
+        "src": "tenant_example/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
+        {"src": "/static/(.*)", "dest": "/static/$1"},
+        {"src": "/(.*)", "dest": "tenant_example/wsgi.py"}
+    ]
 }
