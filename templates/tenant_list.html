@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tenants list</title>
+</head>
+<body>
+{% for tenant in tenants %}
+        <div>
+            {% for tt in tenant.domains.all %}
+                <a href="http://{{ tt.domain }}:8000">
+                    <h2>{{ tenant.name }}</h2>
+                </a>
+            {% endfor %}
+        </div>
+{% endfor %}
+<div style="width: 280px">
+<a href="{% url 'create_tenant' %}"
+    style="display: block; margin-top: 20px; padding: 10px; background-color: #f0f0f0; text-align: center; text-decoration: none;">
+    Create new tenant</a>
+    </div>
+</body>
+</html>

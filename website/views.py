@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Product
 
 
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'product_list.html', {'products': products})
+home = lambda request: redirect('product_list')
+
+
+product_list = lambda request: render(request, 'product_list.html', {'products': Product.objects.all()})
 
 
 def create_product(request):

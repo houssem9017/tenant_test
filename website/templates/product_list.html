@@ -13,7 +13,13 @@
         {% for product in products %}
             <li>{{ product.name }} - ${{ product.price }}</li>
         {% endfor %}
+    {% if products.count == 0 %}
+        <li>No products found</li>
+    {% endif %}
     </ul>
+<a href="{% url 'create_tenant' %}"
+    class="btn btn-primary">Create Tenant</a>
+
 </body>
 </html>
 </title>
