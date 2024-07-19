@@ -7,9 +7,5 @@
     "routes": [
         {"src": "/static/(.*)", "dest": "/static/$1"},
         {"src": "/(.*)", "dest": "tenant_example/wsgi.py"}
-    ],"functions": {
-    "api/**/*.js": {
-      "maxDuration": 60
-    }
-  }
+    ]
 }
