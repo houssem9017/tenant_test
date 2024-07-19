@@ -8,9 +8,15 @@
 {% for tenant in tenants %}
         <div>
             {% for tt in tenant.domains.all %}
+                {% if 'localhost' in tt.domain %}
                 <a href="http://{{ tt.domain }}:8000">
                     <h2>{{ tenant.name }}</h2>
                 </a>
+                    {% else %}
+                <a href="https://{{ tt.domain }}">
+                    <h2>{{ tenant.name }}</h2>
+                </a>
+                {% endif %}
             {% endfor %}
         </div>
 {% endfor %}

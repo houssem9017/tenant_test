@@ -1,7 +1,11 @@
+import os
+
 from django.shortcuts import render, redirect
 from django_tenants.utils import schema_context
 
 from control_tenants.models import Client, TenantForm, Domain
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def tenant_list(request):
@@ -20,7 +24,8 @@ def create_tenant(request):
                     form.add_error('domain', 'A tenant with this domain already exists.')
                     return render(request, 'create_tenant.html', {'form': form})
                 # add .localhost to the domain to make it a valid domain
-                form.cleaned_data['domain'] += '.localhost'
+                form.cleaned_data['domain'] += '.'+os.getenv('DOMAIN_URL')
+                print(os.getenv('DOMAIN_URL'))
                 form.save()
             return redirect('tenant_list')
     else:
