@@ -53,6 +53,13 @@ INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in S
 
 TENANT_MODEL = 'control_tenants.Client'
 TENANT_DOMAIN_MODEL = 'control_tenants.Domain'
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',
